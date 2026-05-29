@@ -50,4 +50,4 @@ make clean
 
 ## Autor
 
-**WUDUPUPPE** — [github.com/WUDUPUPPE](https://github.com/WUDUPUPPE)
+**WUDUPUPPE** - Tejani Awudu Mohammed
