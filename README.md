@@ -1,6 +1,6 @@
 # STEMgraph Praktikumsbericht
 
-LaTeX-Quelldateien für den Praktikumsbericht bei STEMgraph im Rahmen des 9-monatigen Praktikums (LF-BP-9).
+LaTeX-Quelldateien für den Praktikumsbericht bei STEMgraph im Rahmen des 9-monatigen Praktikums.
 
 ---
 
