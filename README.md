@@ -1,6 +1,6 @@
 # STEMgraph Praktikumsbericht
 
-LaTeX-Quelldateien für den Praktikumsbericht bei STEMgraph im Rahmen des 9-monatigen Praktikums.
+LaTeX-Quelldateien für den Praktikumsbericht bei Auto-Intern GmbH im Rahmen des 9-monatigen Praktikums mit dem Projket STEMgraph.
 
 ---
 
