@@ -15,6 +15,12 @@
 *.idx
 *.ind
 *.ilg
+*.glg
+*.glo
+*.gls
+*.acn
+*.acr
+*.alg
 
 # LaTeX build output (wird von GitHub Actions erzeugt)
 *.pdf
@@ -29,3 +35,7 @@
 # Versteckte Temp-Dateien
 *~
 *.swp
+
+# Build-Ordner falls du später einen nutzt
+build/
+out/
