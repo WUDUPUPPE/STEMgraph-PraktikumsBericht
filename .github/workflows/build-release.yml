@@ -1,0 +1,32 @@
+name: Build and Release PDF
+
+on:
+  push:
+    tags:
+      - "v*"          # startet bei Tags wie v1.0, v1.1 usw.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: LaTeX kompilieren
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+
+      - name: PDF als Artefakt speichern
+        uses: actions/upload-artifact@v4
+        with:
+          name: Praktikumsbericht-PDF
+          path: main.pdf
+
+      - name: GitHub Release erstellen und PDF anhängen
+        uses: softprops/action-gh-release@v2
+        with:
+          files: main.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
