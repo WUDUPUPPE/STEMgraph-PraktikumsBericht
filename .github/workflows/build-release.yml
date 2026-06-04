@@ -3,7 +3,10 @@ name: Build and Release PDF
 on:
   push:
     tags:
-      - "v*"          # startet bei Tags wie v1.0, v1.1 usw.
+      - "v*"
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -27,6 +30,7 @@ jobs:
       - name: GitHub Release erstellen und PDF anhängen
         uses: softprops/action-gh-release@v2
         with:
+          name: "Praktikumsbericht ${{ github.ref_name }}"
           files: main.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
