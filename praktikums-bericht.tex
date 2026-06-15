@@ -142,3 +142,110 @@ Hatte ich mich wie immer wieder zwischendurch mich mit dem Frontend der Website 
   \item \texttt{Tailwind CSS} für moderne UI Styling um mir unnötige CSS Grundgerüste zu sparen
   \item \texttt{React Router} um mehrere Ansichtsbereiche zu bauen um Übersicht, Nutzerbereich, Adminbereich sauber zu trennen
 \end{itemize}
+
+\subsection*{08.06.26 -- Montag}
+
+Habe ich mit der Frontend-Konzeptionierung für das STEMgraph-Projekt gestartet.
+Der Main-Bereich sollte vor dem Registrieren oder Login:
+
+\begin{itemize}
+  \item eine leicht verschwommene Graphansicht besitzen
+  \item in der Mitte ein Popup mit \glqq Willkommen -- möchten Sie sich registrieren
+        oder einloggen?\grqq{} wo dann der jeweilige Punkt anklickbar ist
+\end{itemize}
+
+Der Main-Bereich nach dem Login:
+
+\begin{itemize}
+  \item ein Challenge-Detailpanel
+  \item eine Navigationsbar mit:
+        einem Keyword-Bereich, in dem alle Keywords in Gruppen unterteilt und anzeigbar sind;
+        einem Statistikbereich und optional einem Fortschrittsbereich;
+        einem Wiederholungsbereich;
+        einem Einstellungsbereich
+\end{itemize}
+
+Dann hatte ich überlegt, mit einer Datenstruktur zu arbeiten, die auf einer zentralen
+\texttt{challenges.json} basiert und durch das Backend bereitgestellt wird.
+
+\subsection*{09.06.26 -- Dienstag}
+
+Hier überlegte ich mir, eine Node-Hover-Ansicht einzubinden, und entwarf, dass beim
+Hovern über einer Challenge nicht nur eine kleine Detailansicht erscheint, sondern der
+Lernpfad-Kontext sichtbar wird:
+
+\begin{itemize}
+  \item Die aktuelle Challenge steht dabei im Vordergrund (Mittelpunkt).
+  \item Links erscheint die vorherige Challenge im Pfad, leicht abgedunkelt und bei
+        einer abgeschlossenen Challenge zusätzlich mit einer Haken-Markierung.
+  \item Rechts erscheint die nächste folgende Challenge, ebenfalls leicht abgedunkelt,
+        als Vorschau auf den nächsten Schritt.
+  \item Am Anfang eines Lernpfades ist nur die rechte Seite sichtbar.
+  \item Über einen Button \glqq Lernpfad öffnen\grqq{} oben rechts im Hover-Panel
+        kann eine vollständige Lernpfad-Ansicht geöffnet werden.
+\end{itemize}
+
+\subsection*{10.06.26 -- Mittwoch}
+
+An diesem Tag habe ich mich mit der Ausarbeitung der Challenge-Detailansicht sowie
+der vollständigen Lernpfad-Ansicht beschäftigt. Die Detailansicht sollte:
+
+\begin{itemize}
+  \item einen Titel haben, der aus dem JSON-Feld \texttt{teaches} gesetzt wird
+  \item Keywords als Tags zur Gruppierung
+  \item eine Statusanzeige (Current, To-Do, Completed, Learning)
+  \item die vollständige Beschreibung der Challenge-Aufgabe
+\end{itemize}
+
+Außerdem plante ich, dass am Ende der Challenge-Ansicht direkt ein Button
+\glqq Zur Nächsten\grqq{} erscheint, damit der Nutzer nicht wieder zur Lernpfad-
+oder Graphansicht zurückkehren muss.
+
+Zusätzlich legte ich die Grundstruktur der Keyword-Navigation fest:
+
+\begin{itemize}
+  \item Tags werden als Tag-Cloud dargestellt; ein Klick auf einen Tag zeigt alle
+        zugehörigen Challenges sowie deren Abhängigkeiten untereinander.
+\end{itemize}
+
+\subsection*{11.06.26 -- Donnerstag}
+
+Konzentrierte ich mich auf die Abhängigkeitsdarstellung im Graph:
+
+\begin{itemize}
+  \item Kanten repräsentieren \texttt{dependson}-Beziehungen zwischen Nodes und sollen
+        mit einer leicht pulsierenden Animation in Richtung der Ziel-Challenge
+        visualisiert werden.
+  \item Zusätzlich ist eine visuelle Unterscheidung der Status Current, To-Do,
+        Completed und Learning vorgesehen; ob dabei auch die Kanten angepasst werden,
+        muss noch entschieden werden.
+\end{itemize}
+
+Außerdem habe ich mich mit dem Statistikbereich beschäftigt:
+
+\begin{itemize}
+  \item Alle Challenges in einer Listenansicht mit ihrem jeweiligen Status und einem
+        Balken, der anzeigt, wie viel Prozent bereits erledigt wurden
+  \item To-Do-Challenges
+  \item Completed Challenges
+  \item Learning Challenges
+\end{itemize}
+
+Leere Bereiche sollen trotzdem eine kurze Erklärung besitzen, statt nichts anzuzeigen.
+
+\subsection*{12.06.26 -- Freitag}
+
+War das Hauptziel, ein drittes Bash-Skript zu bauen, das einen Subgraphen erstellt:
+Man gibt einen Start- und einen Endpunkt ein und erhält alle Challenges, die
+dazwischen liegen und erledigt werden müssten, um den Endpunkt zu erreichen.
+
+Zusätzlich sollten alle drei Bash-Skripte Zeile für Zeile kommentiert werden, um
+die jeweiligen Funktionen zu beschreiben, sowie mit \texttt{ShellCheck} auf Fehler
+geprüft werden.
+
+Während das erste Skript \texttt{fetch\_rekursivchallenges.sh} ausgehend von einer
+Start-Challenge nur den zugehörigen Lernpfad auf Basis von \texttt{dependson} lädt,
+und das zweite Skript \texttt{fetch\_allchallenges.sh} alle Repositories der
+GitHub-Organisation STEMgraph über die GitHub-API abruft und dabei ausschließlich
+gültige UUIDs als Abhängigkeiten verarbeitet, erstellt das dritte Skript einen
+gezielten Subgraphen zwischen zwei definierten Endpunkten.
