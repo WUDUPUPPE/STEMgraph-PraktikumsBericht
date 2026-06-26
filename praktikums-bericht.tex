@@ -132,7 +132,7 @@ Hab mir gleichzeitig auch Gedanken darum gemacht ob ich ein Rekursives Fetch Scr
 
 Hab dann denn Betreuer gefragt was er denn davon hält welche Version ich a besten nutzen sollte oder ob es ein Repo gibt was so gesehen mit fast allen Repos eine Abhängigkeit hat.
 
-\section{05.06.26 - Freitag}
+\subsection{05.06.26 - Freitag}
 
 Hatte ich zwischendurch mich mit dem Frontend der Website beschäftigt und überlegt welche Technologien ich denn am beste verwende und welche denn das was ich mir Vorstelle am besten umsetzten könnte:
 
@@ -249,3 +249,97 @@ und das zweite Skript \texttt{fetch\_allchallenges.sh} alle Repositories der
 GitHub-Organisation STEMgraph über die GitHub-API abruft und dabei ausschließlich
 gültige UUIDs als Abhängigkeiten verarbeitet, erstellt das dritte Skript einen
 gezielten Subgraphen zwischen zwei definierten Endpunkten.
+
+\subsection{15.06.26 -- Montag}
+
+Hab ich mit dem dritten Bash-Script weiter gemacht und vollständig umgesetzt \texttt{get\_subgrapph\_challenges} und mit ShellCheck geprüft, ob mögliche Fehler vorhanden sind.
+Konkret ist die Aufgabe, aus der lokalen \texttt{./challanges} einen Abhängigkeits-Graphen zu bauen und einen Pfad von einer Start- bis zu einer Ziel-Challenge zu berechnen.
+
+Zusätzlich habe ich dann noch direkt ein Bash-Script für mein Frontend \texttt{export\_graph\_data.sh} gebaut.
+Dieses Script liest alle lokalen Challenges aus \texttt{./challenge} und erzeugt daraus eine zentrale \texttt{graph-data.json}.
+
+\begin{itemize}
+    \item Es prüft, ob ein Basisverzeichnis vorhanden ist.
+    \item Es holt die \texttt{./challenge}-Daten.
+    \item Es extrahiert die benötigten JSON-Komponenten.
+    \item Es schreibt diese in die \texttt{graph-data.json}, damit ich sie später im Frontend aufrufen kann.
+\end{itemize}
+
+Danach hatte ich noch überlegt, ein anderes \texttt{get\_subgraph\_challenges.sh} Bash-Script zu bauen.
+Dieses sollte den Pfad zwischen den Challenges auf Basis der \texttt{graph-data.json} berechnen.
+
+\subsection{16.06.26 -- Dienstag}
+
+Wurden beide nochmal überprüft auf Fehler mit ShellCheck.
+
+Danach hatte ich die Skripte wie die anderen schon Zeile für Zeile ausführlich mit Inline-Kommentaren versehen, im Stil: ``Was macht die Zeile genau?''
+
+Die drei Skripte im Projekt sind:
+\begin{itemize}
+    \item \texttt{get\_all\_challenges.sh}
+    \item \texttt{get\_rekursiv\_challenges.sh}
+    \item \texttt{get\_subgraph\_challenges.sh}
+\end{itemize}
+
+Zusätzlich gibt es \texttt{export\_graph\_data.sh} und \texttt{graph-data\_subgraph.sh}.
+
+\subsection{17.06.26 -- Mittwoch}
+
+Schloss ich das Teilprojekt rund um das Verständnis der Abhängigkeiten von LinkedList, Neo4j und den Bash-Skripten ab, um zu verstehen, was Knoten und Beziehung sind, wie sie sich verhalten und wie ich dieses Wissen technisch in den Bash-Skripten umsetzte.
+
+Legte die Repositories dann nicht mehr separat ab, sondern in einem gemeinsamen Repository, auf Empfehlung, da es mehr Sinn macht.
+
+\subsection{18.06.26 -- Donnerstag}
+
+War meine neue Aufgabe, eine Beispiel-Projektdokumentation zu beschaffen, die mir gefällt, und dann schon mal die drei Bash-Skripte zu dokumentieren.
+
+\begin{itemize}
+    \item Hatte gestartet mit dem Titelblatt und es schon so gestaltet, dass es direkt nutzbar für meine echte Dokumentation ist.
+    \item Hab Pakete für das Layout, Bilder, Sprache und Schrift hinzugefügt, das Seitenlayout angepasst und ein automatisches Inhaltsverzeichnis eingebaut.
+    \item Kopf- und Fußzeile wurden für alle Seiten außer der Titelseite eingerichtet.
+    \item Die Kopfzeile enthält Projektname, Projektbeschreibung und das Firmenlogo.
+    \item Die Fußzeile enthält links meinen Namen und mittig die Seitenanzahl.
+    \item Auf der Titelseite stehen IHK-Logo, Art der Prüfung und Beruf, Art des Dokuments, Projekttitel und Beschreibung, Abgabedatum, Eigendaten sowie Firmendaten und Firmenlogo.
+\end{itemize}
+
+\subsection{19.06.26 -- Freitag}
+
+Hatte die Titelseite beziehungsweise die \texttt{main.tex} fertiggestellt und danach begonnen, die Dokumentation zu schreiben.
+
+\begin{itemize}
+    \item Begonnen hatte ich mit der Ausgangssituation und dem Ziel.
+    \item Dann folgten die Werkzeuge wie \LaTeX, Makefile und Git.
+    \item Danach kam der Zusammenhang von LinkedList und Neo4j.
+    \item Anschließend beschrieb ich die Skripte \texttt{get\_all\_challenges.sh}, \texttt{get\_rekursiv\_challenges.sh} und \texttt{get\_subgraph\_challenges.sh}.
+    \item Danach erläuterte ich die Rolle von \LaTeX, Makefile und Git im aktuellen Stand.
+    \item Zum Schluss ergänzte ich noch ein Zwischenfazit.
+\end{itemize}
+
+\subsection{22.06.26 -- Montag}
+
+Als ich die Dokumentation fertig hatte, begann ich das Teilprojekt in meine Website einzufügen.
+Ich überlegte auf Empfehlung, einen Blogpost zu setzen, was mir aber nicht sinnvoll erschien, sondern das Projekt in die bestehende Struktur einzubinden.
+
+\begin{itemize}
+    \item Ich machte Screenshots von den Bash-Skripten und fügte sie in die Bilder-Vorschau ein.
+    \item Ich fügte alle verwendeten Technologien ein.
+    \item Ich fügte den Link zum Repo ein.
+    \item Ich schrieb eine passende Teilprojekt-Beschreibung.
+\end{itemize}
+
+Ich überlegte mir dann trotzdem noch etwas, um zu zeigen, woran ich gerade arbeite und was mein Hauptfokus ist.
+
+\subsection{23.06.26 -- Dienstag}
+
+Es entstand die Überlegung, doch noch einen neuen Bereich einzufügen, um den aktuellen Stand zu erläutern.
+Dort erkläre ich praktisch, was ich aktuell mache und was sonst noch ansteht.
+
+\begin{itemize}
+    \item So kann ich dann doch blogmäßig zeigen, dass ich gerade ein Teilprojekt des Praktikums abgeschlossen habe.
+\end{itemize}
+
+Zusätzlich möchte ich auch noch GitHub-Stats im Bereich Skills einblenden, um den Bereich zu vervollständigen und alles auf einen Blick sichtbar zu machen.
+
+\begin{itemize}
+    \item Dafür habe ich eine neue Card erstellt, die mir aus GitHub die meistgenutzten Programmiersprachen holt, anzeigt und sich selbst aktualisiert, wenn sich etwas ändert.
+\end{itemize}
