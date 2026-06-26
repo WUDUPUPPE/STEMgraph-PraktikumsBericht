@@ -4,8 +4,8 @@ LATEXMK = latexmk
 
 all: $(PDF)
 
-$(PDF): $(TEX) praktikums-bericht.tex latex.tex linkedlist.tex neo4j.tex makefile.tex
-	$(LATEXMK) -pdf -interaction=nonstopmode -file-line-error $(TEX)
+$(PDF): $(TEX)
+	$(LATEXMK) -pdf -interaction=nonstopmode -file-line-error -use-make $(TEX)
 
 clean:
 	$(LATEXMK) -c
